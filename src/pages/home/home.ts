@@ -1,19 +1,34 @@
 import { Component } from '@angular/core';
-import {NavController, Platform} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import Parse from 'parse';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public platform: Platform,
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
   ) {
-    Parse.initialize("YOUR-APP-ID", "YOUR-JS-KEY");
-    Parse.serverURL = 'https://parseapi.back4app.com/';
+
   }
 
+  logOut() {
+    Parse.User.logOut().then((resp) => {
+      console.log('Logged out successfully', resp);
+
+      this.navCtrl.setRoot('LoginPage');
+    }, err => {
+      console.log('Error logging out', err);
+
+      this.toastCtrl.create({
+        message: 'Error logging out',
+        duration: 2000
+      }).present();
+    })
+  }
 }
