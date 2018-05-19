@@ -19,7 +19,7 @@ export class LoginPage {
   }
 
   signUp() {
-    Parse.User.signUp('foo', '123abc').then((resp) => {
+    Parse.User.signUp(this.username, this.password).then((resp) => {
       console.log('Logged in successfully', resp);
 
       // Clears up the form
