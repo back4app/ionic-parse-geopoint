@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Maps</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <agm-map
+    [latitude]="current.lat"
+    [longitude]="current.lng"
+    [zoom]="10"
+    [mapTypeId]="'roadmap'">
+
+    <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="clickedMarker(m, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label">
+    </agm-marker>
+  </agm-map>
+</ion-content>
