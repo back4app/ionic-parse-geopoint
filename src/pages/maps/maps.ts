@@ -18,11 +18,7 @@ export class MapsPage {
     this.current = data.current;
     this.markers = data.markers || [];
 
-    console.log('recebeeu', data);
-  }
-
-  clickedMarker(marker, i) {
-    console.log(marker, i);
+    console.log('Markers received', data);
   }
 }
 
